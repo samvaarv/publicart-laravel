@@ -12,9 +12,7 @@ class ArtistSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {
-        Artist::factory()-> create(['artist'=>'Alexander Dion']);
-        
+    {        
         Artist::factory(5)->create();
     }
 }

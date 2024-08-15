@@ -20,12 +20,10 @@ class ArtworkFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake() -> name(),
-            'imageURL' => fake() -> imageUrl(640, 480, 'monuments', true),
-            'yearInstalled' => fake() -> numberBetween(1990, 2024),
-            'description' => fake() -> text(),
-            'artist_id' => fake() -> unique()->numberBetween(1, 5),
-            'location_id' => fake() -> unique()->numberBetween(1, 5),
+            // 'title' => fake() -> name(),
+            // 'imageURL' => fake() -> imageUrl(640, 480, 'monuments', true),
+            // 'yearInstalled' => fake() -> numberBetween(1990, 2024),
+            // 'description' => fake() -> text(),
         ];
     }
 }

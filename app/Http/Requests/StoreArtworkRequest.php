@@ -22,7 +22,11 @@ class StoreArtworkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|min:6',
+            'description' => 'required|string|min:25',
+            'imageURL' => 'required|string',
+            'yearInstalled' => 'required',
+            'artist_id' => 'required|exists:artists,id',
         ];
     }
 }

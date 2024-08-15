@@ -16,11 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('imageURL');
             $table->integer('yearInstalled');
-            $table->string('description');
-            $table->unsignedBigInteger('artist_id')->unique(); 
-            $table->foreign('artist_id')->references('id')->on('artists') ->onDelete('cascade');
-            $table->unsignedBigInteger('location_id')->unique(); 
-            $table->foreign('location_id')->references('id')->on('locations') ->onDelete('cascade');
+            $table->text('description');
+            $table->unsignedBigInteger('artist_id'); 
+            $table->foreign('artist_id')->references('id')->on('artists');
             $table->timestamps();
         });
     }

@@ -13,14 +13,10 @@ return new class extends Migration
     {
         Schema::create('artists', function (Blueprint $table) {
             $table->id();
+            $table->string('artistImage');
             $table->string('artist');
             $table->timestamps();
         });
-
-        // Schema::table('artworks', function (Blueprint $table){
-        //     // $table->foreignId('artist_id')->constrained()->onDelete('cascade');
-        //     $table->foreignId('artist_id')->nullable()->references('id')->on('artists')->onDelete('cascade');
-        // });
     }
 
     /**

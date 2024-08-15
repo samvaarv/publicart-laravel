@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Artwork;
+use App\Models\Artist;
 use App\Http\Requests\StoreArtworkRequest;
 use App\Http\Requests\UpdateArtworkRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ArtworkController extends Controller
 {
@@ -13,7 +16,9 @@ class ArtworkController extends Controller
      */
     public function index()
     {
-        //
+        $artworks = Artwork::with('artist')->get();
+
+        return view('artworks.index',['artworks' => $artworks]);
     }
 
     /**
@@ -21,7 +26,9 @@ class ArtworkController extends Controller
      */
     public function create()
     {
-        //
+        return view('artworks.create', [
+            'artists'=> Artist::all()
+        ]);
     }
 
     /**
@@ -29,7 +36,18 @@ class ArtworkController extends Controller
      */
     public function store(StoreArtworkRequest $request)
     {
-        //
+        // $artwork = Artwork::create($request->validated());
+        // $artwork -> artists() -> attach($request -> artist); 
+        $artwork = Artwork::create($request->validated(),[
+            'title' => $request->title, 
+            'description' => $request->description, 
+            'imageURL' => $request->imageURL, 
+            'yearInstalled' => $request->yearInstalled, 
+            'artist_id' => $request->artist,
+            // Add other fields as necessary
+        ]);
+        Session::flash('success', 'Artwork added successfully');
+        return redirect() -> route('artworks.index');
     }
 
     /**
@@ -37,7 +55,15 @@ class ArtworkController extends Controller
      */
     public function show(Artwork $artwork)
     {
-        //
+        return view('artworks.show',compact('artwork'));
+
+    }
+
+    public function showPublic($id)
+    {
+        $artwork = Artwork:: where('id', $id)-> first();
+        return view('artworks.show-public',compact('artwork'));
+
     }
 
     /**
@@ -45,7 +71,7 @@ class ArtworkController extends Controller
      */
     public function edit(Artwork $artwork)
     {
-        //
+        return view('artworks.edit',compact('artwork'),['artists' => Artist::all()]);
     }
 
     /**
@@ -53,7 +79,16 @@ class ArtworkController extends Controller
      */
     public function update(UpdateArtworkRequest $request, Artwork $artwork)
     {
-        //
+        // $artwork->update($request->validated());
+        $artwork->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'imageURL' => $request->imageURL, 
+            'yearInstalled' => $request->yearInstalled, 
+            'artist_id' => $request->artist_id,
+        ]);
+        Session::flash('success', 'Artwork Updated successfully');
+        return redirect() -> route('artworks.index');
     }
 
     /**
@@ -61,6 +96,8 @@ class ArtworkController extends Controller
      */
     public function destroy(Artwork $artwork)
     {
-        //
+        $artwork -> forceDelete();
+        Session::flash('success', 'Artwork deleted successfully');
+        return redirect() -> route('artworks.index');
     }
 }
