@@ -30,6 +30,7 @@
                         </li>
                     </ul>
                     <div class="user-header d-flex align-items-center">
+                        <a href="/register" class="btn btn-primary">Register</a>
                         <a href="/login" class="btn btn-warning">
                             <svg height="45.6" width="125.738"><rect height="45.6" width="125.738"></rect></svg>
                             <span class="btn-text">Login</span>

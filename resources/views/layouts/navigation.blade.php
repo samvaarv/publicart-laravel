@@ -18,14 +18,8 @@
                     <x-nav-link :href="route('artworks.index')" :active="request()->routeIs('artworks.index')">
                         {{ __('Artworks') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('artworks.create')" :active="request()->routeIs('artworks.create')">
-                        {{ __('Add Artwork') }}
-                    </x-nav-link>
                     <x-nav-link :href="route('artists.index')" :active="request()->routeIs('artists.index')">
                         {{ __('Artists') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('artists.create')" :active="request()->routeIs('artists.create')">
-                        {{ __('Add Artist') }}
                     </x-nav-link>
 
                 </div>

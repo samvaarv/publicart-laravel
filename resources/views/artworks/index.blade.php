@@ -9,6 +9,12 @@
     </section>
     <section class="section-body">
         <div class="container">
+            <div>
+                <a href="{{ route('artworks.create')}}" class="btn btn-warning mb-4">
+                    <svg height="45.6" width="125.738"><rect height="45.6" width="125.738"></rect></svg>
+                    <span class="btn-text">Add Artwork</span>
+                </a>
+            </div>
             <div class="row" data-masonry='{"percentPosition": true }'>
                 @foreach ($artworks as $artwork )
                     <div class="card-art col-12 col-md-6 col-xl-4">

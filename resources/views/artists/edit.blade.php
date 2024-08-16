@@ -40,4 +40,4 @@
             </form>
         </div>
     </section>
-<x-app-layout>
+</x-app-layout>
