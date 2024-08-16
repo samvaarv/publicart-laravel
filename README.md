@@ -1,66 +1,49 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Public Art Management System with Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Project Description
 
-## About Laravel
+The Public Art Management System is a web application designed to manage public art installations. It provides an admin dashboard for managing artworks and artists, including CRUD (Create, Read, Update, Delete) operations. The application uses Bootstrap for responsiveness and custom CSS for styling.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Technologies Used
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+`Laravel`, `PHP`, `MySQL`, `HTML`, `CSS`, `Bootstrap`, `JavaScript`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
+- CRUD Operations: Create, Read, Update, and Delete `artworks`.
+- CRUD Operations: Create, Read, Update, and Delete `artists`.
+- CREATE method of `artworks` saves relationship to `artists` table by `artist_id` which is the foreign_key for `artists` table).
+- Authentication using Breeze with registration and login functionality.
+- Admin Dashboard: Dedicated admin panel for data management.
+- Public views: login and register views, the welcome page with all the artworks and the page displaying artwork by `id`.
+- Admin views: dashboard, artworks (create, edit, index, show) and artists (create, edit and index)
 
-## Learning Laravel
+## Database Design
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+The database consists of three tables: artworks, artists, and users. The artworks table has a foreign key `artistId` that references the `id` in the artists table (one-to-many relationship where one artist can have multiple artworks).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Artworks Table:
+- `_id`: Primary key, auto-incremented `integer` (20).
+- `title`: Title of the artwork, `varchar`(255).
+- `imageURL`: URL of the image, `varchar`(255).
+- `yearInstalled`: Year the artwork was installed, `varchar`(11).
+- `description`: Description of the artwork, `text`.
+- `artistId`: Foreign key, references artistId in artists table, `int` (20).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Artists Table:
+- `id`: Primary key, auto-incremented `integer` (20).
+- `artistImage`: Image URL of the artist, `varchar`(255).
+- `artist`: Name of the artist, `varchar`(255).
 
-## Laravel Sponsors
+## Public Views
+<img src="./public/images/frame1.png" width="500px">
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Login/Register Views
+<img src="./public/images/frame2.png" width="500px">
 
-### Premium Partners
+## Admin Views
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Manage Artworks
+<img src="./public/images/frame3.png" width="500px">
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Manage Artists
+<img src="./public/images/frame4.png" width="500px">
